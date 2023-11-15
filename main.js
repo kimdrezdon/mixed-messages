@@ -1,16 +1,14 @@
-// Which Michael Scott are you today?
-
 // Store message components
 const messageComponents = {
 	mood: [
-		'Happy',
-		'Sad',
-		'Outraged',
-		'Lonely',
-		'Funny',
-		'Loving',
-		'Inspirational',
-		'Mischievous'
+		'happy',
+		'sad',
+		'outraged',
+		'lonely',
+		'funny',
+		'loving',
+		'inspirational',
+		'mischievous'
 	],
 	buddy: ['Pam', 'Jim', 'Dwight', 'Ryan', 'Jan', 'Holly', 'Kevin', 'Stanley'],
 	alter_ego: [
@@ -35,31 +33,21 @@ const messageComponents = {
 	]
 };
 
-// Generate random number
-// const randomNumber = () => {
-// 	return Math.floor(Math.random() * 8);
-// };
+// Generates a random number between 0 and 7
+const generateRandomNum = () => Math.floor(Math.random() * 8);
 
-// Randomly select message components and save them to an array
-// const selectedComponents = [];
+// Returns the component in messageComponents object, at the index provided
+const selectComponent = (type, num) => messageComponents[type][num];
 
-// const randomlySelect = () => {
-// 	for (const component in messageComponents) {
-// 		const index = randomNumber();
-// 		selectedComponents.push(messageComponents[component][index]);
-// 	}
-// };
+// Generates the random message to be logged to the console
+const generateMessage = () => {
+	let mood = selectComponent('mood', generateRandomNum());
+	let buddy = selectComponent('buddy', generateRandomNum());
+	let alter_ego = selectComponent('alter_ego', generateRandomNum());
+	let quote = selectComponent('quote', generateRandomNum());
 
-// Generate the printed message
-// const generateMessage = () => {
-// 	randomlySelect();
-// 	console.log("What's up Michael Scott!");
-// 	console.log(`Today your mood is: ${selectedComponents[0]}`);
-// 	console.log(`Your best buddy is: ${selectedComponents[1]}`);
-// 	console.log(`Your alter ego is: ${selectedComponents[2]}`);
-// 	console.log("That's what she said!");
-// };
+	return `Good morning Michael! Here is your guide for the day: \n Today you are feeling ${mood}. \n You best buddy will be ${buddy}. \n Your alter ego is ${alter_ego}. \n Your phrase of the day is "${quote}". \n Have a great day at Dunder Mifflin, Michael! `;
+};
 
-// generateMessage();
-
-// message = `Good morning Michael! Today you are in a ${mood} mood. You best buddy is ${buddy} and your alter ego is ${alter_ego}. Your quote of the day is ${quote}. Have a great day at Dunder Mifflin, Michael! `;
+// Log the message to the console
+console.log(generateMessage());
